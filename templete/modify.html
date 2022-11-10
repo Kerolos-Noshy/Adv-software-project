@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/static/css/login.css">
+</head>
+    <title>Modify</title>
+</head>
+<body>
+    <section class="ftco-section" style="padding: 0;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-7 col-lg-5">
+                <div class="wrap">
+                <div class="login-wrap p-4 p-md-5">
+                    <div class="d-flex">
+                        <div class="w-100">
+                            <h3 class="mb-4">Modify</h3>
+                        </div>
+                        <div class="w-100">
+                            <p class="social-media d-flex justify-content-end">
+                            </p>
+                        </div>
+                    </div>
+                    {% if admin == True %}
+                    <form action="/adminmodify" class="signin-form" method="POST">
+                    {% elif admin == None %}
+                    <form action="/adminusermodify/{{data.ID}}" class="signin-form" method="POST">
+                    {% else %}
+                    <form action="/usermodify/{{data.ID}}" class="signin-form" method="POST">
+                    {% endif %}
+                    {% if admin == False or admin == None%}
+                        <div class="form-group mt-3">
+                            <input name="Fname" class="form-control" value = "{{data.name.split(' ')[0]}}" required>
+                            <label class="form-control-placeholder" for="Fname">First Name</label>
+                        </div>
+                        <div class="form-group mt-3">
+                            <input name="Sname" class="form-control" value = "{{data.name.split(' ')[1]}}" required>
+                            <label class="form-control-placeholder" for="Sname">Second Name</label>
+                        </div>
+                        <div class="form-group mt-3">
+                            <input name="Lname" class="form-control" value = "{{data.name.split(' ')[2]}}" required>
+                            <label class="form-control-placeholder" for="Lname">Last Name</label>
+                        </div>
+                        <div class="form-group mt-3">
+                            <input name="Phone" class="form-control" value = "{{data.phone}}"  required>
+                            <label class="form-control-placeholder" for="Phone">Phone Number</label>
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="email" name="Email" class="form-control" value = "{{data.mail}}" required>
+                            <label class="form-control-placeholder" for="Email">Email</label>
+                        </div>
+                        <div class="form-group">
+                            <input id="password-field" type="password" name="Password" value = "{{data.password}}" class="form-control" required>
+                            <label class="form-control-placeholder" for="Password">Password</label>
+                            <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                        </div>
+                        {% else %} 
+                        <div class="form-group mt-3">
+                            <input name="fname" class="form-control" required  value="{{data.name.split(' ')[0]}}">
+                            <label class="form-control-placeholder" for="fname">First Name</label>
+                        </div>
+                        <div class="form-group mt-3">
+                            <input name="lname" class="form-control" required  value="{{data.name.split(' ')[1]}}">
+                            <label class="form-control-placeholder" for="lname">Last Name</label>
+                        </div>                   
+                        <div class="form-group mt-3">
+                            <input type="email" name="Email" class="form-control" required value = {{data.mail}}>
+                            <label class="form-control-placeholder" for="Email">Email</label>
+                        </div>
+                        <div class="form-group">
+                            <input id="password-field" type="password" name="Password" class="form-control" required value = {{data.password}}>
+                            <label class="form-control-placeholder" for="Password">Password</label>
+                            <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                        </div>
+                        {% endif %}     
+                        <div class="form-group">
+                            <button type="submit" class="form-control btn btn-primary rounded submit px-3">Submit</button>
+                        </div>
+                        <div class="form-group d-md-flex">
+
+                        </div>
+                    </form>
+                </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/popper.js+bootstrap.min.js+main.js.pagespeed.jc.3YxqA_kpjO.js"></script><script>eval(mod_pagespeed_B48vE68w01);</script>
+    <script>eval(mod_pagespeed_M0XlbbKlq8);</script>
+    <script>eval(mod_pagespeed_DUZ_Pnp2XD);</script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6db71c125a4f104b","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2021.12.0","si":100}' crossorigin="anonymous"></script>
+</body>
+</html>
